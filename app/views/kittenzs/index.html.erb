@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>This is where the kittenz hang</h1>
+
+<table>
+  <thead>
+    <tr>
+
+      <th>Picture</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @kittenzs.each do |kittenz| %>
+      <tr>
+        <td><%= image_tag(kittenz.picture_url, :width => 150) if kittenz.picture.present? %><td>
+        <td><%= kittenz.name %></td>
+        <td><%= kittenz.description %></td>
+        <td><%= link_to 'Show', kittenz %></td>
+        <td><%= link_to 'Edit', edit_kittenz_path(kittenz) %></td>
+        <td><%= link_to 'Destroy', kittenz, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Kittenz', new_kittenz_path %>
